@@ -1,0 +1,14 @@
+#修改监控端口
+server:
+  port: 9000
+
+#如果pom继承了spring-boot-starter-parent，SpringBoot已经将maven-resources-plugins默认的${}方式改为了@@方式
+spring:
+  profiles:
+    active: dev
+  application:
+    name: spring-boot-hello
+
+
+logging:
+  config: classpath:log4j2.yml
