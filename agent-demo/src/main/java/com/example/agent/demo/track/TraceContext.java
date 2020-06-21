@@ -1,6 +1,9 @@
 package com.example.agent.demo.track;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Stack;
 import java.util.UUID;
 
@@ -11,7 +14,6 @@ public class TraceContext {
     private static final ThreadLocal<Stack<Span>> spanLink = new ThreadLocal<>();
 
     private static final ThreadLocal<Integer> offsetLocal = new ThreadLocal<>();
-
 
     public static void clear(){
         traceIdLocal.remove();

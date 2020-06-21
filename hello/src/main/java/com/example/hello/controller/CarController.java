@@ -19,11 +19,11 @@ public class CarController {
 
     @GetMapping("/all")
     public List<Car> all(){
-        return other();
+        return other("1234567");
     }
 
 
-    public List<Car> other(){
+    public List<Car> other(String carNo){
         return carService.all();
     }
 }

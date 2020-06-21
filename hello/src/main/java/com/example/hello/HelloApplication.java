@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // -javaagent:C:\GitProjects\java-agent-demo\agent-demo\target\agent-demo-0.0.1-SNAPSHOT.jar=testargs
 
+// -javaagent:/Users/lizhaoyang/IdeaProjects/java-agent-demo-2/agent-demo/target/agent-demo-0.0.1-SNAPSHOT.jar=testargs
+
 @SpringBootApplication
 public class HelloApplication {
 
