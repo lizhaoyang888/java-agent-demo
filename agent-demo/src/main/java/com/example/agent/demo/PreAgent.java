@@ -11,6 +11,7 @@ import java.lang.instrument.Instrumentation;
 
 public class MyAgent {
 
+    //Premain-Class: com.example.agent.demo.MyAgent
     //JVM 首先尝试在代理类上调用以下方法
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("基于javaagent链路追踪");
@@ -26,10 +27,16 @@ public class MyAgent {
             return builder;
         };
 
-        agentBuilder = agentBuilder.type(ElementMatchers.nameStartsWith("com.example.hello.controller"))
-                .or(ElementMatchers.nameStartsWith("com.example.hello.service"))
-                .or(ElementMatchers.nameStartsWith("com.example.hello.dao"))
+        agentBuilder = agentBuilder.type(ElementMatchers.nameStartsWith("com.guazi.nr.trade.price.controller"))
+                .or(ElementMatchers.nameStartsWith("com.guazi.nr.trade.price.service"))
+                .or(ElementMatchers.nameStartsWith("com.guazi.nr.trade.price.dao"))
+                .or(ElementMatchers.nameStartsWith("com.guazi.nr.trade.price.dubbo"))
                 .transform(transformer).asDecorator();
+
+//        agentBuilder = agentBuilder.type(ElementMatchers.nameStartsWith("com.example.hello.controller"))
+//                .or(ElementMatchers.nameStartsWith("com.example.hello.service"))
+//                .or(ElementMatchers.nameStartsWith("com.example.hello.dao"))
+//                .transform(transformer).asDecorator();
 
         //监听
         AgentBuilder.Listener listener = new AgentBuilder.Listener() {
@@ -40,7 +47,7 @@ public class MyAgent {
 
             @Override
             public void onTransformation(TypeDescription typeDescription, ClassLoader classLoader, JavaModule javaModule, boolean b, DynamicType dynamicType) {
-                System.out.println("onTransformation：" + typeDescription);
+               // System.out.println("onTransformation：" + typeDescription);
             }
 
             @Override
